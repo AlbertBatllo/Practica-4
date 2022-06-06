@@ -125,6 +125,76 @@ server.send(200, "text/html", HTML);
 ```
 
 
+# Practica 3: Bluetooth
 
+En aquesta part de la pràctica establirem conexió a partir del Bluetooth de la ESP32 amb altres dispositius, de manera que ens podrem enviar i rebre missatges.
+
+## Codi
+
+```
+#include <Arduino.h>
+#include <BluetoothSerial.h>
+
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+#endif
+
+BluetoothSerial SerialBT;
+
+void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("ESP32test"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!");
+}
+
+void loop() {
+  if (Serial.available()) {
+    SerialBT.write(Serial.read());
+  }
+  if (SerialBT.available()) {
+    Serial.write(SerialBT.read());
+  }
+  delay(20);
+}
+```
+
+## Explicació del Codi
+
+Per a utilitzar el Bluetooth dependrem de la llibreria 'BluetoothSerial.h':
+
+```
+#include <BluetoothSerial.h>
+```
+
+A continuació declararem l'objecte que ens permetra interactuar amb el dispositiu Bluetooth:
+
+```
+BluetoothSerial SerialBT;
+```
+
+**Set Up:**
+
+ Inicialitzarem l'objecte i l'anomenarem "ESP32test", el qual serà el nom amb el que altres dispositius connectats al Bluetooth el veuràn:
+ 
+ ```
+ void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("ESP32test"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!");
+}
+```
+
+**Loop:**
+
+```
+void loop() {
+  if (Serial.available()) {
+    SerialBT.write(Serial.read());
+  }
+  if (SerialBT.available()) {
+    Serial.write(SerialBT.read());
+  }
+  delay(20);
+}
 
 
