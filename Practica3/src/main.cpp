@@ -6,8 +6,8 @@ extern String HTML;
 void handle_root();
 
 // SSID & Password
-const char* ssid = "Xiaomi_11T_Pro"; // Enter your SSID here
-const char* password = "f5cbd8a82232"; //Enter your Password here
+const char* ssid = "Redmi Note 8 Pro"; // Enter your SSID here
+const char* password = "bhvgdgrxsfrh583"; //Enter your Password here
 WebServer server(80);
 
 // Object of WebServer(HTTP port, 80 is defult)
@@ -39,7 +39,7 @@ server.handleClient();
 String HTML = "<!DOCTYPE html>\
 <html>\
 <body>\
-<h1> algo ;</h1>\
+<h1> Aquesta és la Pràctica 4 de l'asignatura Processadors Digitals. </h1>\
 </body>\
 </html>";
 
