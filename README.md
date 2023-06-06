@@ -1,4 +1,4 @@
-# Practica3: WIFI
+# Practica 4: WIFI
 
 En aquesta part de la pràctica utlitzarem el WiFi de la ESP32 per a crear una pàgina web
 
@@ -125,7 +125,7 @@ server.send(200, "text/html", HTML);
 ```
 
 
-# Practica 3: Bluetooth
+# Practica 4: Bluetooth
 
 En aquesta part de la pràctica establirem conexió a partir del Bluetooth de la ESP32 amb altres dispositius, de manera que ens podrem enviar i rebre missatges.
 
